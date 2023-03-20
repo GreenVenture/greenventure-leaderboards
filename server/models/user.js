@@ -1,7 +1,7 @@
 /* This is the user model. It defines the structure of the user object. */
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
+const leaderboardSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
     },
 })
 
-userSchema.set('toJSON', {
+leaderboardSchema.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString()
         delete returnedObject._id
@@ -21,4 +21,4 @@ userSchema.set('toJSON', {
     }
 })
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('Leaderboard', leaderboardSchema)

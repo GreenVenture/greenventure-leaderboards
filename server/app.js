@@ -11,8 +11,7 @@ require('express-async-errors');
 
 mongoose.set('strictQuery', false)
 
-//TODO: import controllers
-const leaderboardsRouter = require('./controllers/leaderboards');
+const usersRouter = require('./controllers/users');
 
 // connect to mongodb database
 logger.info('connecting to', config.MONGODB_URI);
@@ -31,8 +30,7 @@ app.use(express.static('build'));
 app.use(express.json());
 app.use(middleware.requestLogger);
 
-//TODO: add routers
-app.use('/api/leaderboards', leaderboardsRouter);
+app.use('/api/users', usersRouter);
 
 // error handler and unknown endpoint must be after routers
 app.use(middleware.unknownEndpoint);

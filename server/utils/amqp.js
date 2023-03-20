@@ -3,7 +3,7 @@ import { logger } from '../utils/logger';
 
 const connectToMessageBroker = async () => {
     try {
-        const connection = await amqp.connect('amqp://localhost');
+        const connection = await amqp.connect('tcp://localhost:61616');
         const channel = await connection.createChannel();
         logger.info('Connected to message broker');
         return channel;
@@ -14,7 +14,6 @@ const connectToMessageBroker = async () => {
 
 const publishMessage = async (channel, queue, message) => {
     try {
-        const queue = 'leaderboard';
         await channel.assertQueue(queue, { durable: true });
         await channel.sendToQueue(queue, Buffer.from(message));
         logger.info('Message sent to message broker');
@@ -29,6 +28,7 @@ const consumeMessage = async (channel, queue, callback) => {
         await channel.consume(queue, (message) => {
             logger.info('Message received from message broker', message.content.toString());
             channel.ack(message);
+            callback(message.content.toString());
         });
         logger.info('Consuming messages from message broker');
     } catch (error) {

@@ -34,6 +34,5 @@ app.use('/api/users', usersRouter);
 
 // error handler and unknown endpoint must be after routers
 app.use(middleware.unknownEndpoint);
-app.use(middleware.errorHandler);
 
 module.exports = app;

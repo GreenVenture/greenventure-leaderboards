@@ -1,5 +1,6 @@
 /* This is the leaderboards router. It handles the updating and retrieving of leaderboards. */
 const User = require('../models/user')
+const usersRouter = require('express').Router()
 
 /* This is a GET request to the users endpoint. It is retrieving the users from the
 database. */

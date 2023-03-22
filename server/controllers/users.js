@@ -14,13 +14,24 @@ usersRouter.get('/', async (request, response) => {
     }
 });
 
+/* This is a GET request to the users endpoint. It is retrieving the users from the
+database. */
+usersRouter.get('/:id', async (request, response) => {
+    const user = await User.findById(request.params.id);
+    if (user) {
+        response.json(user);
+    } else {
+        response.status(404).end();
+    }
+});
+
 /* This is a POST request to the users endpoint. It is creating a new user in the database. */
 usersRouter.post('/', async (request, response, next) => {
     const { body } = request
 
     const user = new User({
         name: body.name,
-        score: body.score,
+        points: body.points,
     })
 
     try {

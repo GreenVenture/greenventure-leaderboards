@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+/* Fonts */
+body {
+	font-family: Inter, 'Trebuchet MS', Arial, sans-serif;
+	font-size: clamp(0.89rem, 0.23vw + 0.84rem, 1rem);
+	font-weight: 400;
+	line-height: 1.5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 700;
+	line-height: calc(2px + 2ex + 2px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+	font-size: clamp(3.39rem, 0.87vw + 3.2rem, 3.81rem);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h2 {
+	font-size: clamp(2.71rem, 0.69vw + 2.56rem, 3.05rem);
 }
 
-.App-link {
-  color: #61dafb;
+h3 {
+	font-size: clamp(2.17rem, 0.55vw + 2.05rem, 2.44rem);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h4 {
+	font-size: clamp(1.74rem, 0.44vw + 1.64rem, 1.95rem);
 }
+
+h5 {
+	font-size: clamp(1.39rem, 0.36vw + 1.31rem, 1.56rem);
+}
+
+h6 {
+	font-size: clamp(1.11rem, 0.28vw + 1.05rem, 1.25rem);
+}
+
+/* Colors */
+:root {
+	--main-brand-color: #39AF70;
+	--dark-accent-color: #737169;
+	--dark-shade-color: #24272B;
+	--light-accent-color: #85A09C;
+	--light-shade-color: #EAF0EE;
+	--off-white-color: #FEFEFE;
+	--danger-red-color: #ca001e;
+}
+
+/* Border Radius */
+.btn {
+	border-radius: 16px;
+}
+
+.btn-small {
+	border-radius: 8px;
+}
+
+/* Other */
+.caption {
+	font-size: clamp(0.71rem, 0.18vw + 0.67rem, 0.8rem);
+}
+
+.tiny {
+	font-size: clamp(0.57rem, 0.15vw + 0.54rem, 0.64rem);
+}  

@@ -1,6 +1,16 @@
 {
   "short_name": "React App",
   "name": "Create React App Sample",
+  "web_accessible_resources": [
+    "images/*.png",
+    "scripts/*.js",
+    "client/src/assets/profiles/*.avif"
+  ],
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
   "icons": [
     {
       "src": "favicon.ico",

@@ -30,7 +30,7 @@ app.use(express.static('build'));
 app.use(express.json());
 app.use(middleware.requestLogger);
 
-app.use('/api/users', usersRouter);
+app.use('/api/leaderboard', usersRouter);
 
 // error handler and unknown endpoint must be after routers
 app.use(middleware.unknownEndpoint);

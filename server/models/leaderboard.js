@@ -6,7 +6,6 @@ const leaderboardSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
     },
     points: {
         type: Number,
@@ -22,7 +21,5 @@ leaderboardSchema.set('toJSON', {
         delete returnedObject.__v
     }
 })
-
-leaderboardSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('Leaderboard', leaderboardSchema)

@@ -28,19 +28,27 @@ leaderboardsRouter.get('/:id', async (request, response) => {
 /* This is a POST request to the users endpoint. It is creating a new user in the database. */
 leaderboardsRouter.post('/', async (request, response, next) => {
     const { body } = request
-
+  
+    // Check if a document with the same name already exists
+    const existingUser = await Leaderboard.findOne({ name: body.name })
+    if (existingUser) {
+        return response.status(400).json({ error: 'Name must be unique' })
+    }
+  
+    // Create a new leaderboard object and save it to the collection
     const user = new Leaderboard({
         name: body.name,
         points: body.points,
     })
-
+  
     try {
         const savedUser = await user.save()
         response.status(201).json(savedUser)
     } catch (exception) {
         next(exception)
     }
-});
+  });
+  
 
 /* This is a PATCH request to the users endpoint. It is updating a user in the database. */
 leaderboardsRouter.patch('/:id', async (request, response, next) => {

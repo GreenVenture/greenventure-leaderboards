@@ -1,11 +1,11 @@
 /* This is the leaderboards router. It handles the updating and retrieving of leaderboards. */
-const User = require('../models/user')
-const usersRouter = require('express').Router()
+const Leaderboard = require('../models/leaderboard')
+const leaderboardsRouter = require('express').Router()
 
 /* This is a GET request to the users endpoint. It is retrieving the users from the
 database. */
-usersRouter.get('/', async (request, response) => {
-    const users = await User
+leaderboardsRouter.get('/', async (request, response) => {
+    const users = await Leaderboard
         .find({})
     if (users) {
         response.json(users)
@@ -16,8 +16,8 @@ usersRouter.get('/', async (request, response) => {
 
 /* This is a GET request to the users endpoint. It is retrieving the users from the
 database. */
-usersRouter.get('/:id', async (request, response) => {
-    const user = await User.findById(request.params.id);
+leaderboardsRouter.get('/:id', async (request, response) => {
+    const user = await Leaderboard.findById(request.params.id);
     if (user) {
         response.json(user);
     } else {
@@ -26,10 +26,10 @@ usersRouter.get('/:id', async (request, response) => {
 });
 
 /* This is a POST request to the users endpoint. It is creating a new user in the database. */
-usersRouter.post('/', async (request, response, next) => {
+leaderboardsRouter.post('/', async (request, response, next) => {
     const { body } = request
 
-    const user = new User({
+    const user = new Leaderboard({
         name: body.name,
         points: body.points,
     })
@@ -43,15 +43,15 @@ usersRouter.post('/', async (request, response, next) => {
 });
 
 /* This is a PATCH request to the users endpoint. It is updating a user in the database. */
-usersRouter.patch('/:id', async (request, response, next) => {
+leaderboardsRouter.patch('/:id', async (request, response, next) => {
     const { body } = request;
 
     try {
-        const updatedUser = await User.findByIdAndUpdate(request.params.id, body, { new: true });
+        const updatedUser = await Leaderboard.findByIdAndUpdate(request.params.id, body, { new: true });
         response.status(204).json(updatedUser);       
     } catch (exception) {
         next(exception);
     }
 });
 
-module.exports = usersRouter
+module.exports = leaderboardsRouter

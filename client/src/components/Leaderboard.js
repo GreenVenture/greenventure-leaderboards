@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LeaderboardService from "../services/leaderboards";
+import { FaCrown } from "react-icons/fa";
 
 const Leaderboard = () => {
 	const [users, setUsers] = useState([]);
@@ -26,33 +27,78 @@ const Leaderboard = () => {
 
 	return (
 		<div>
-			<h2>Leaderboard</h2>
-			<table>
-				<thead>
-				<tr>
-					<th>Rank</th>
-					<th>Name</th>
-					<th>Points</th>
-				</tr>
-				</thead>
-				<tbody>
-				{sortedUsers.map((user, index) => (
-					<tr key={user.id}>
-						<td>
+			<div class="text-center my-5">
+				<h3>Leaderboard</h3>
+			</div>
+			{sortedUsers.length > 0 ? (
+				<>
+					<div className="text-center row px-5">
+						<div className="col-4 m-0 p-0">
+							<div>
+								<label><strong>2</strong></label><br/>
+							</div>
 							<img
 								src={require(`../assets/profiles/${randomizeProfilePictures()}`)}
 								alt="Profile"
-								className="profile rounded-circle"
-								style={{ width: "50px", height: "50px" }}
+								className="profile rounded-circle border border-success border-2"
+								style={{ width: "80px", height: "80px", boxShadow: "0 0 8px 2px rgba(0, 255, 0, 0.5)" }}
 							/>
-						</td>
-						<td>{index + 1}</td>
-						<td>{user.name}</td>
-						<td>{user.points}</td>
-					</tr>
-				))}
-				</tbody>
-			</table>
+							<br/>
+							<label><strong>@{sortedUsers[1].name}</strong></label><br/>
+							<label>{sortedUsers[1].points}</label>
+						</div>
+						<div className="text-center col-4 m-0 p-0">
+							<div>
+								<label><strong>1</strong></label><br/>
+								<FaCrown size={40} color="gold"/>
+							</div>
+							<img
+								src={require(`../assets/profiles/${randomizeProfilePictures()}`)}
+								alt="Profile"
+								className="profile rounded-circle border border-success border-3"
+								style={{ width: "100px", height: "100px", boxShadow: "0 0 10px 4px rgba(0, 255, 0, 0.5)" }}
+							/>
+							<label><strong>@{sortedUsers[0].name}</strong></label><br/>
+							<label>{sortedUsers[0].points}</label>
+						</div>
+						<div className="col-4 m-0 p-0">
+							<div>
+								<label><strong>3</strong></label><br/>
+							</div>
+							<img
+								src={require(`../assets/profiles/${randomizeProfilePictures()}`)}
+								alt="Profile"
+								className="profile rounded-circle border border-success border-2"
+								style={{ width: "80px", height: "80px", boxShadow: "0 0 8px 2px rgba(0, 255, 0, 0.5)" }}
+							/>
+							<br/>
+							<label><strong>@{sortedUsers[2].name}</strong></label><br/>
+							<label>{sortedUsers[2].points}</label>
+						</div>
+					</div>
+					<table className="table table-borderless">
+						<tbody>
+							{sortedUsers.slice(3).map((user, index) => (
+								<tr key={user.id}>
+									<td>{index + 4}</td>
+									<td>
+										<img
+											src={require(`../assets/profiles/${randomizeProfilePictures()}`)}
+											alt="Profile"
+											className="profile rounded-circle border border-success border-1"
+											style={{ width: "50px", height: "50px" }}
+										/>
+										<span> {user.name}</span>
+									</td>
+									<td>{user.points}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</>
+			) : (
+				<p>Loading...</p>
+			)}
 		</div>
 	);
 };

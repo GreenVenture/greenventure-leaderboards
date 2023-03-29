@@ -51,12 +51,12 @@ leaderboardsRouter.post('/', async (request, response, next) => {
   
 
 /* This is a PATCH request to the users endpoint. It is updating a user in the database. */
-leaderboardsRouter.patch('/:id', async (request, response, next) => {
+leaderboardsRouter.patch('/:name', async (request, response, next) => {
     const { body } = request;
-
+  
     try {
-        const updatedUser = await Leaderboard.findByIdAndUpdate(request.params.id, body, { new: true });
-        response.status(204).json(updatedUser);       
+        const updatedUser = await Leaderboard.findOneAndUpdate({ name: request.params.name }, body, { new: true });
+        response.status(204).json(updatedUser);
     } catch (exception) {
         next(exception);
     }

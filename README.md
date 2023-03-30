@@ -1,9 +1,9 @@
 # greenventure-leaderboards
-
+```
 docker-compose up --build
-
-Client: PORT:3000
-Server: PORT:5103
+```
+Client - PORT:3000 <br>
+Server - PORT:5103
 
 # API Documentation
 

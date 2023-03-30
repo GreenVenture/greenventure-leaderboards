@@ -24,7 +24,7 @@ https://localhost:3001/api/leaderboards
 #### Add a user
 **POST:** / <br>
 **Send:** userId (String), name (String), points (Number)<br>
-**Receive:**  User Object, Response Code - 201 || Respose Code - 400, Name must be unique || Response Code - 404, unknown endpoint
+**Receive:**  User Object, Response Code - 201 || Exception || Response Code - 404, unknown endpoint
 
 #### Update a user's points
 **PATCH:** /:userId <br>

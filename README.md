@@ -14,12 +14,12 @@ https://localhost:5103/api/leaderboards
 #### Get all users
 **GET:** /<br>
 **Send:** NIL <br>
-**Receive:** All Users || Response Code - 404 || Response Code - 404, unknown endpoint
+**Receive:** All Users, Response Code - 200 OK || Response Code - 404 || Response Code - 404, unknown endpoint
 
 #### Get specific user
 **GET:** /:userId <br>
 **Send:** NIL <br>
-**Receive:** Specific User || Response Code - 404 || Response Code - 404, unknown endpoint
+**Receive:** Specific User, Response Code - 200 OK || Response Code - 404 || Response Code - 404, unknown endpoint
 
 #### Add a user
 **POST:** / <br>

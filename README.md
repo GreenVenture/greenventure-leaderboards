@@ -7,7 +7,7 @@ docker run --name greenventure-leaderboards -p 5103:5103  leaderboards
 # API Documentation
 
 ## Base API URL
-https://localhost:3001/api/leaderboards
+https://localhost:5103/api/leaderboards
 
 ## User Related APIs
 

@@ -1,4 +1,11 @@
 # greenventure-leaderboards
+
+### Add `.env` file and configure database connection
+```
+MONGODB_URI=mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
+PORT=5103
+```
+
 ```
 docker-compose up --build
 ```

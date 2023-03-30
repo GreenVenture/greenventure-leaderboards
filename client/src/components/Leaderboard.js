@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import LeaderboardService from "../services/leaderboards";
 import { FaCrown } from "react-icons/fa";
 
@@ -6,6 +6,7 @@ const Leaderboard = () => {
 	const [users, setUsers] = useState([]);
 	const [mainUser, setMainUser] = useState("");
 	const [userPosition, setUserPosition] = useState(0);
+	const scrollingListRef = useRef(null);
 
 	useEffect(() => {
 		// Here you can fetch the data from your API or database
@@ -16,6 +17,16 @@ const Leaderboard = () => {
 			}
 		);
 	}, []);
+
+	useEffect(() => {
+		if (scrollingListRef.current && userPosition >= 0) {
+			const mainUserPill = scrollingListRef.current.querySelector('.glow');
+			if (mainUserPill) {
+				mainUserPill.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}
+		}
+	}, [userPosition, mainUser]);
+	
 
 	// Randomize profile pictures for users
 	const imageCount = 15;
@@ -28,7 +39,7 @@ const Leaderboard = () => {
 	const sortedUsers = users.sort((a, b) => b.points - a.points);
 
 	useEffect(() => {
-		window.localStorage.setItem("userID", "162804203307686"); //TODO remove
+		window.localStorage.setItem("userID", "212814203332282"); //TODO remove
 		// Get mainUser userId from local storage
 		const storedMainUser = window.localStorage.getItem("userID"); //TODO check if correct way to get userID
 		if (storedMainUser) {
@@ -93,30 +104,32 @@ const Leaderboard = () => {
 							<label><strong className="top-three">{sortedUsers[2].points}</strong></label>
 						</div>
 					</div>
-					<div className="mt-4 mx-auto">
-						{sortedUsers.slice(3).map((user, index) => (
-							<div className="row py-2 d-flex justify-content-center" key={user.userId}>
-								<div className="col-2 d-flex justify-content-center align-items-center ps-5">
-									<label><strong>{ index + 4 }</strong></label>
-								</div>
-								<div className="col-10">
-									<div className={`badge badge-pill border border-success p-0 m-0 ${user.userId === mainUser ? 'glow' : ''}`} style={{ display: 'flex', alignItems: 'center' }}>
-										<img
-											src={require(`../assets/profiles/${randomizeProfilePictures()}`)}
-											alt="Profile"
-											className="profile rounded-circle"
-											style={{ width: "50px", height: "50px" }}
-										/>
-										<label className="mx-5" style={{ fontSize: "12px" }}>@{user.name}</label>
-										<label className="points ms-auto pe-3"><strong>{user.points}</strong></label>
+					<div style={{ height: '475px', overflowY: 'scroll' }} ref={scrollingListRef}>
+						<div className="mt-4 mx-auto">
+							{sortedUsers.slice(3).map((user, index) => (
+								<div className="row py-2 d-flex justify-content-center" key={user.userId}>
+									<div className="col-2 d-flex justify-content-center align-items-center ps-5">
+										<label><strong>{ index + 4 }</strong></label>
+									</div>
+									<div className="col-10">
+										<div className={`badge badge-pill border border-success p-0 m-0 ${user.userId === mainUser ? 'glow' : ''}`} style={{ display: 'flex', alignItems: 'center' }}>
+											<img
+												src={require(`../assets/profiles/${randomizeProfilePictures()}`)}
+												alt="Profile"
+												className="profile rounded-circle"
+												style={{ width: "50px", height: "50px" }}
+											/>
+											<label className="mx-5" style={{ fontSize: "12px" }}>@{user.name}</label>
+											<label className="points ms-auto pe-3"><strong>{user.points}</strong></label>
+										</div>
 									</div>
 								</div>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
 				</>
 			) : (
-				<p>Loading...</p>
+				<p className="text-center">Loading...</p>
 			)}
 			<div className="blur-effect"></div>
 		</div>

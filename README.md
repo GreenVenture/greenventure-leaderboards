@@ -5,7 +5,7 @@
 MONGODB_URI=mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
 PORT=5103
 ```
-
+### Docker Command
 ```
 docker-compose up --build
 ```

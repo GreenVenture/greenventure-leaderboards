@@ -2,7 +2,7 @@
 
 docker build -t leaderboards .  
 
-docker run --name greenventure-leaderboards -p 3001:3001  leaderboards
+docker run --name greenventure-leaderboards -p 5103:5103  leaderboards
 
 # API Documentation
 

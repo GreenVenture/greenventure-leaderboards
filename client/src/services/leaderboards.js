@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/api/leaderboards'
+const baseUrl = 'http://localhost:5103/api/leaderboards'
 
 const getAll = () => {
     const request = axios.get(baseUrl)

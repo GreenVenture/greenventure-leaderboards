@@ -1,8 +1,9 @@
 # greenventure-leaderboards
 
-docker build -t leaderboards .  
+docker-compose up --build
 
-docker run --name greenventure-leaderboards -p 5103:5103  leaderboards
+Client: PORT:3000
+Server: PORT:5103
 
 # API Documentation
 

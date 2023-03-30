@@ -93,36 +93,32 @@ const Leaderboard = () => {
 							<label><strong className="top-three">{sortedUsers[2].points}</strong></label>
 						</div>
 					</div>
-					<table className="table table-borderless text-center mt-4">
-						<tbody>
-							{sortedUsers.slice(3).map((user, index) => (
-								<tr key={user.userId}>
-									<td>
-										<div style={{ display: 'flex', alignItems: 'center' }}>
-											<label>{ index + 4 }</label>
-										</div>	
-										<div 
-											className={`badge badge-pill p-0 ${user.userId === mainUser ? 'glow' : ''}`} 
-											style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
-										>
-											<img
-												src={require(`../assets/profiles/${randomizeProfilePictures()}`)}
-												alt="Profile"
-												className="profile rounded-circle me-5 ps-0"
-												style={{ width: "50px", height: "50px" }}
-											/>
-											<label className="text-center">@{user.name}</label>
-											<label className="mx-5">{user.points}</label>
-										</div>
-									</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
+					<div className="mt-4 mx-auto">
+						{sortedUsers.slice(3).map((user, index) => (
+							<div className="row py-2 d-flex justify-content-center" key={user.userId}>
+								<div className="col-2 d-flex justify-content-center align-items-center ps-5">
+									<label><strong>{ index + 4 }</strong></label>
+								</div>
+								<div className="col-10">
+									<div className={`badge badge-pill border border-success p-0 m-0 ${user.userId === mainUser ? 'glow' : ''}`} style={{ display: 'flex', alignItems: 'center' }}>
+										<img
+											src={require(`../assets/profiles/${randomizeProfilePictures()}`)}
+											alt="Profile"
+											className="profile rounded-circle"
+											style={{ width: "50px", height: "50px" }}
+										/>
+										<label className="mx-5" style={{ fontSize: "12px" }}>@{user.name}</label>
+										<label className="points ms-auto pe-3"><strong>{user.points}</strong></label>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
 				</>
 			) : (
 				<p>Loading...</p>
 			)}
+			<div className="blur-effect"></div>
 		</div>
 	);
 };

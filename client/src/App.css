@@ -67,6 +67,21 @@ label {
 	font-size: clamp(0.71rem, 0.18vw + 0.67rem, 0.8rem);
 }
 
+.glow {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #1f77d0, 0 0 70px #1f77d0, 0 0 80px #1f77d0, 0 0 100px #1f77d0;
+}
+
 .tiny {
 	font-size: clamp(0.57rem, 0.15vw + 0.54rem, 0.64rem);
 }  
+
+.top-three {
+	color: var(--main-brand-color);
+	font-size: large;
+}
+
+.badge-pill {
+	border-radius: 10rem;
+	background-color: var(--light-accent-color);
+	width: 16rem;
+}

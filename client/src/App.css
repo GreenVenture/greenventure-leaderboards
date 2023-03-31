@@ -78,7 +78,6 @@ label {
 	background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
 	filter: blur(10px);
 }
-  
 
 .caption {
 	font-size: clamp(0.71rem, 0.18vw + 0.67rem, 0.8rem);

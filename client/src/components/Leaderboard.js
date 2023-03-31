@@ -104,6 +104,7 @@ const Leaderboard = () => {
 							<label><strong className="top-three">{sortedUsers[2].points}</strong></label>
 						</div>
 					</div>
+					<br/>
 					<div style={{ height: '475px', overflowY: 'scroll' }} ref={scrollingListRef}>
 						<div className="mt-4 mx-auto">
 							{sortedUsers.slice(3).map((user, index) => (

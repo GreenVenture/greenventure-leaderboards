@@ -15,7 +15,7 @@ Server - PORT:5103
 # API Documentation
 
 ## Base API URL
-https://localhost:5103/api/leaderboards
+http://localhost:5103/api/leaderboards
 
 ## User Related APIs
 
